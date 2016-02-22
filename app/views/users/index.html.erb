@@ -1,0 +1,34 @@
+<style>
+  .flash {
+    height: 40px;
+    border: 2px solid red;
+    color: red;
+    line-height: 40px;
+    margin-bottom: 20px;
+    width: 400px;
+  }
+</style>
+
+<h1>Stranica korisnika Studentske sluzbe</h1>
+<h2> Ukupno prijavljenih korisnika : <%= @users_count %></h2>
+
+<h2>Lista Korisnika</h2>
+<%= link_to 'Prijava novog', new_user_path%>
+
+<% unless flash[:notice].nil?%>
+    <div class="flash"> <%= flash[:notice] %></div>
+<% end%>
+<%@users.each do |user|%>
+    <div>
+      id: <%= user.id%>,
+      username: <%= user.username%>,
+      password: <%=user.password%>
+     first_name: <%= user.first_name%>,
+      last_name: <%=user.last_name%>
+     email: <%= user.email%>,
+      <%= link_to 'Details', user_path(user)%>
+      <%= link_to 'edit', edit_user_path(user)%>
+      <%= link_to 'Delete', user_path(user), method: :delete %>
+    </div>
+
+<%end%>

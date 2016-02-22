@@ -1,0 +1,30 @@
+<h2>Create new user</h2>
+
+<%= form_for(@user) do |form|%>
+    <% unless @user.errors.empty?%>
+        <ul>
+          <% @user.errors.full_messages.each do |message|%>
+          <li><%= message %> </li>
+          <% end %>
+        </ul>
+
+    <% end%>
+    <br/>
+
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+    <br></br>
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+    <br></br>
+    <%= form.label :first_name %>
+    <%= form.text_area :first_name %>
+    <br></br>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+    <br></br>
+    <%= form.label :email %>
+    <%= form.text_area :email %>
+    <br></br>
+    <%= form.submit 'Save' %>
+<%end%>

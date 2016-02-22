@@ -1,8 +1,8 @@
 class StudentsController < ApplicationController
 	def index
 	end
-end
-def show
+
+  def show
     student_id =params[:id]
     @student = Student.find(student_id)
   end
@@ -45,3 +45,4 @@ def show
     def student_params
       params.require(:student).permit(:name, :price, :description)
     end
+end
